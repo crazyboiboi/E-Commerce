@@ -23,7 +23,9 @@ const Footer = () => {
             </p>
 
             <div className="logo">
-                <Logo />
+                <Link to="/">
+                    <Logo color="white" />
+                </Link>
                 <p>Copyright &copy; 2021 Commerce</p>
             </div>
 
@@ -42,7 +44,7 @@ const Footer = () => {
                 </li>
             </ul>
 
-           
+
 
         </footer>
     )

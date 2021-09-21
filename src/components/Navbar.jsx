@@ -6,11 +6,14 @@ import { Badge } from '@material-ui/core'
 
 import logo from '../assets/logo.svg'
 
+import Logo from './Logo'
+
+
 const Navbar = () => {
     return (
         <nav className="navbar">
             <Link to="/">
-                <img src={logo} alt="logo"></img>
+                <Logo />
             </Link>
 
             <ul className="navbar__links">
