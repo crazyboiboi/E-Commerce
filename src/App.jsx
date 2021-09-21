@@ -4,15 +4,17 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from "./pages/Home";
 
 // Components
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/Navbar";
+import Footer from './components/Footer'
+
 
 const App = () => {
   return (
     <>
     <Router>
       <Navbar />
-      {/* <Home /> */}
-
+      <Home />
+      <Footer />
     </Router>
     </>
   );

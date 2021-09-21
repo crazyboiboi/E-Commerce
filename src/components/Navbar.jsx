@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { ShoppingCart } from '@material-ui/icons'
 import { Badge } from '@material-ui/core'
 
-import logo from '../../assets/logo.svg'
+import logo from '../assets/logo.svg'
 
 const Navbar = () => {
     return (

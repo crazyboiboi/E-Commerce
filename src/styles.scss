@@ -2,10 +2,19 @@
 
 /*=============== VARIABLES CSS ===============*/
 :root {
+    --header-height: 85px;
+
     /*========== COLORS ==========*/
     --clr-softblue: hsl(234, 82%, 57%);
     --clr-skyblue: hsl(201, 44%, 85%);
-    --clr-lightblue: hsl(190, 27%, 96%);
+    // --clr-lightblue: hsl(190, 27%, 96%);
+    --clr-glacier: hsl(188, 34%, 65%);
+
+    --clr-light: hsl(0, 0%, 94%);
+    --clr-dark: hsl(242, 100%, 7%);
+    --clr-lightgray: hsl(0, 0%, 83%);
+    --clr-gray: hsl(0, 0%, 20%);
+
 
     /*========== FONT AND TYPOGRAPHY ==========*/
     --body-font: 'Rubik', sans-serif;
@@ -22,7 +31,7 @@
 
     // For tablet and PC devices
     @media screen and (min-width: 1024px) {
-        --biggest-font-size: 2.25rem;
+        --biggest-font-size: 3rem;
         --big-font-size: 1.75rem;
         --medium-font-size: 1.25rem;
         --small-font-size: 1rem;
@@ -85,30 +94,47 @@ input[type=checkbox] {
 
 
 /* ========== LAYOUT ========== */
-body{
+body {
     margin: var(--header-height) 0 0 0;
     font-family: var(--body-font);
     font-size: var(--small-font-size);
-    color: var(--clr-gray);
+    color: var(--clr-lightgray);
 }
+
+.container {
+    position: relative;
+    display: grid;
+    padding: 0 12rem;
+}
+
+.separator {
+    position: relative;
+    padding: 3rem 0;
+    background: hsl(180, 30%, 78%);
+}
+
 
 
 /* ========== REUSABLE CLASSES ========== */
 .section {
     &__title {
         font-size: var(--big-font-size);
-        font-weight: var(--fw-mediumbold);
-        color: var(--clr-darkblue);
-        text-align: center;
-        width: 100%;
-        line-height: 2.2rem;
+        font-weight: var(--fw-bold);
+        color: var(--clr-dark);
+        line-height: 100%;
     }
 
     &__paragraph {
         font-size: var(--small-font-size);
-        text-align: center;
-        width: 100%;
+        color: var(--clr-gray);
         line-height: 1.5rem;
+    }
+
+    &__tagline {
+        font-size: var(--medium-font-size);
+        font-weight: var(--fw-bold);
+        color: var(--clr-light);
+        line-height: 2.2rem;
     }
 }
 
@@ -121,19 +147,271 @@ body{
     color: var(--clr-softblue);
 }
 
+.btn {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 1rem 1.5rem;
+    line-height: inherit;
+    border-radius: 2rem;
+    font-family: var(--body-font);
+    font-weight: var(--fw-mediumbold);
+    font-size: var(--small-font-size);
+    transition: background-color 0.4s ease;
+
+    &.submit {
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+    }
+
+    &:hover {
+        background-color: var(--clr-lightgray);
+        transition: background-color 0.4s ease;
+    }
+
+    &.blue {
+        background: var(--clr-softblue);
+        color: white;
+
+        &:hover {
+            background-color: var(--clr-light);
+            color: var(--clr-dark);
+            transition: background-color 0.2s ease,
+                        color 0.2s ease;
+        }
+    }
+}
+
 
 /* ========== NAVBAR ========== */
 .navbar {
-    width: 100%;
     position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 3rem;
+    background: white;
 
     &__links {
         display: flex;
         gap: 2.5rem;
         margin-right: 2rem;
+    }
+}
+
+
+/* ========== INTRODUCTION ========== */
+.introduction {
+    padding: 4rem;
+    grid-template-columns: 1fr 1fr;
+    background: var(--clr-glacier);
+
+    &__content {
+        max-width: 600px;
+        padding: 2rem;
+        display: grid;
+        justify-items: flex-start;
+        gap: 20px;
+
+        .section__title {
+            font-size: var(--biggest-font-size);
+        }
+    }
+}
+
+
+/* ========== GALLERY ========== */
+.gallery {
+    background: hsl(180, 30%, 78%);
+
+    &__header {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        button {
+            grid-column-start: 2;
+            grid-row: 1 / span 2;
+            justify-self: flex-end;
+            align-self: center;
+        }
+    }
+
+    &__items {
+        padding: 2rem 0;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    &__item {
+        background: white;
+        box-shadow: 4px 8px 8px rgba(0.5, 0.5, 0.5, 0.1);
+
+        &-banner {
+            color: white;
+            background: red;
+            text-align: center;
+            line-height: 1.5rem;
+        }
+
+        img {
+            padding: 1rem;
+            border: 0;
+            height: unset;
+            aspect-ratio: 4/3;
+            object-fit: contain;            
+        }
+
+        &-content {
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        &-name {
+            font-size: var(--big-font-size);
+            color: var(--clr-dark);
+        }
+
+        &-category {
+            font-size: var(--small-font-size);
+            color: var(--clr-gray);
+        }
+
+        &-price {
+            position: relative;
+            font-size: var(--medium-font-size);
+            color: var(--clr-softblue);
+            display: inline-block;
+
+            span {
+                position: absolute;
+                text-decoration: line-through;
+                bottom: 0;
+                color: red;
+                font-size: 1rem;
+                margin-left: 5px;
+            }
+        }
+    }
+}
+
+
+/* ========== SALES ========== */
+.sales {
+    grid-template-columns: 1fr 1fr;
+
+    &__content {
+        max-width: 600px;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 20px;
+
+        .section__title {
+            font-size: var(--biggest-font-size);
+        }
+
+        .section__tagline {
+            color: var(--clr-gray);
+        }
+    }
+
+    img {
+        max-width: 80%;
+        margin: auto;
+    }
+}
+
+
+/* ========== NEWSLETTER ========== */
+.newsletter {
+    justify-items: center;
+    background: var(--clr-glacier);
+    padding: 6rem 0;
+    gap: 30px;
+
+    .section__title {
+        font-size: var(--biggest-font-size);
+    }
+
+    .section__tagline {
+        color: var(--clr-gray); 
+    }
+
+    .form {
+        display: flex;
+        gap: 20px;
+
+        input {
+            border-radius: 0.5rem;
+            width: 400px;
+            padding: 0 1rem;
+        }
+    }
+}
+
+
+/* ========== FOOTER ========== */
+.footer {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    grid-template-areas: 
+        "email address . . logo"
+        "phone socials . . logo";
+    row-gap: 20px;
+    background: hsl(208, 19%, 25%);
+
+    p {
+        line-height: 1.3rem;
+    }
+
+    span {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 0.5rem;
+        color: hsl(12, 56%, 52%);
+    }
+
+    .email {
+        grid-area: email;
+    }
+
+    .address {
+        grid-area: address;
+    }
+
+    .phone {
+        grid-area: phone;
+    }
+
+    .logo {
+        grid-area: logo;
+        justify-self: flex-end;
+        align-self: flex-end;
+        
+        p {
+            margin-top: 0.75rem;
+        }
+    }
+
+    .socials {
+        grid-area: socials;
+        display: flex;
+        gap: 1.5rem;
+        align-self: center;
+
+        .link {
+            color: white;
+        }
+
+        .link:hover {
+            color: hsl(12, 56%, 52%);
+        }
     }
 }
