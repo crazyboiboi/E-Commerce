@@ -5,15 +5,17 @@
     --header-height: 72px;
 
     /*========== COLORS ==========*/
-    --clr-softblue: hsl(234, 82%, 57%);
-    --clr-skyblue: hsl(201, 44%, 85%);
-    // --clr-lightblue: hsl(190, 27%, 96%);
-    --clr-glacier: hsl(188, 34%, 65%);
-
     --clr-light: hsl(0, 0%, 94%);
-    --clr-dark: hsl(242, 100%, 7%);
     --clr-lightgray: hsl(0, 0%, 83%);
     --clr-gray: hsl(0, 0%, 20%);
+    --clr-dark: hsl(242, 100%, 7%);
+    
+    --clr-skyblue: hsl(180, 30%, 78%);
+    --clr-glacier: hsl(188, 34%, 65%);
+    --clr-softblue: hsl(234, 82%, 57%);
+    --clr-darkblue: hsl(208, 19%, 25%);
+    --clr-orange: hsl(12, 56%, 52%);
+    --clr-red: hsl(0, 100%, 47%);
 
 
     /*========== FONT AND TYPOGRAPHY ==========*/
@@ -114,9 +116,7 @@ body {
 .separator {
     position: relative;
     padding: 3rem 0;
-    background: hsl(180, 30%, 78%);
 }
-
 
 
 /* ========== REUSABLE CLASSES ========== */
