@@ -1,0 +1,103 @@
+
+/* ========== INTRODUCTION ========== */
+.introduction {
+    padding: 4rem;
+    grid-template-columns: 1fr 1fr;
+    background: var(--clr-glacier);
+
+    &__content {
+        padding: 2rem 4rem;
+        display: grid;
+        justify-items: flex-start;
+        gap: 20px;
+
+        .section__title {
+            font-size: var(--biggest-font-size);
+        }
+    }
+}
+
+
+/* ========== GALLERY ========== */
+.gallery {
+    background: var(--clr-skyblue);
+
+    &__header {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        div {
+            grid-column-start: 2;
+            grid-row: 1 / span 2;
+            justify-self: flex-end;
+            align-self: center;
+        }
+    }
+
+    &__items {
+        padding: 2rem 0;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+}
+
+
+/* ========== SALES ========== */
+.sales {
+    grid-template-columns: 1fr 1fr;
+
+    &__content {
+        max-width: 600px;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 20px;
+
+        .section__title {
+            font-size: var(--biggest-font-size);
+        }
+
+        .section__tagline {
+            color: var(--clr-gray);
+        }
+    }
+
+    img {
+        max-width: 80%;
+        margin: auto;
+    }
+}
+
+
+/* ========== NEWSLETTER ========== */
+.newsletter {
+    justify-items: center;
+    background: var(--clr-glacier);
+    gap: 30px;
+
+    .section__title {
+        font-size: var(--biggest-font-size);
+    }
+
+    .section__tagline {
+        color: var(--clr-gray); 
+    }
+
+    .form {
+        display: flex;
+        gap: 20px;
+
+        input {
+            border-radius: 0.5rem;
+            width: 400px;
+            padding: 0 1rem;
+        }
+
+        input:focus {
+            border: 1px solid var(--clr-lightgray);
+        }
+    }
+}

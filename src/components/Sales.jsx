@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import hero from '../assets/cart.jpg'
 
@@ -11,7 +12,7 @@ const Sales = () => {
                 <p className="section__paragraph"> Donec ut lorem sit amet leo malesuada porta id ut
                     eros.Quisque at eros vel ipsum laoreet fringilla nec sed arcu.Pellentesque habitant
                     morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-                <button class="btn blue">Shop Now</button>
+                <Link to="/shop" class="btn btn-primary">Shop Now</Link>
             </div>
 
             <img src={hero} alt="hero-shopping-cart" />

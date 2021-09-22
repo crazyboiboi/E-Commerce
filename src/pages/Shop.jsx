@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Products from '../components/Products'
+import ShopItems from '../components/ShopItems'
 import SortAndFilter from '../components/SortAndFilter'
 import ShopBanner from '../components/ShopBanner'
 
@@ -9,7 +9,7 @@ const Shop = () => {
         <main>
             <ShopBanner name="All Products" />
             <SortAndFilter />
-            <Products />
+            <ShopItems />
         </main>
     )
 }

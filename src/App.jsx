@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 // Pages
 import Home from "./pages/Home";
 import Shop from './pages/Shop';
+import Item from './pages/Item';
 import Error from './pages/Error';
 
 // Components
@@ -21,6 +22,9 @@ const App = () => {
           </Route>
           <Route path="/shop">
             <Shop />
+          </Route>
+          <Route path="/item">
+            <Item />
           </Route>
           <Route path="*">
             <Error />

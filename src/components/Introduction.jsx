@@ -1,5 +1,6 @@
 import React from 'react'
 import { ArrowForward } from '@material-ui/icons';
+import { Link } from 'react-router-dom';
 
 import hero from '../assets/hero.png'
 
@@ -14,9 +15,9 @@ const Introduction = () => {
                     elit. Suspendisse ac tortor ut ligula posuere porta. Nunc ultrices malesuada erat at
                     condimentum. Pellentesque faucibus lectus sit amet erat consequat finibus. Donec semper
                     ultricies elementum. </p>
-                <button className="btn blue">Browse Now
+                <Link to="/shop" className="btn btn-primary">Browse Now
                     <ArrowForward style={{fontSize: 'medium'}}/>
-                </button>
+                </Link>
             </div>
         </div>
     )

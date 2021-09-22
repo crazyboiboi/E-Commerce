@@ -1,0 +1,36 @@
+/* ========== SHOP BANNER ========== */
+.banner {
+    padding: 4rem 12rem;
+    background: var(--clr-glacier);
+    text-align: center;
+    font-size: var(--biggest-font-size);
+    font-weight: var(--fw-semibold);
+    color: var(--clr-gray);
+}
+
+
+/* ========== SORTFILTER ========== */
+.sortfilter {
+    display: flex;
+    gap: 20px;
+    padding: 2rem 16rem 0;
+
+    label {
+        margin-right: 10px;
+        color: var(--clr-dark);
+        font-weight: var(--fw-semibold);
+    }
+
+    select {
+        padding: 0.25rem;
+    }
+}
+
+
+/* ========== PRODUCT ========== */
+.products {
+    padding: 2rem 12rem;
+    display: grid;
+}
+
+

@@ -6,6 +6,7 @@ const SortAndFilter = () => {
             <div>
                 <label for="sort">Sort</label>
                 <select name="sort">
+                    <option disabled selected value> -- Select an option -- </option>
                     <option value="asc">Ascending</option>
                     <option value="desc">Descending</option>
                     <option value="plow">Price Low</option>
@@ -16,6 +17,7 @@ const SortAndFilter = () => {
             <div>
                 <label for="filter">Filter</label>
                 <select name="filter">
+                    <option disabled selected value> -- Select an option -- </option>
                     <option value="category">Category</option>
                     <option value="color">Color</option>
                     <option value="color">On Sale</option>

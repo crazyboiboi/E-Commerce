@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Gallery from '../components/Gallery/Gallery'
+import Gallery from '../components/Gallery'
 import Sales from '../components/Sales'
 import Introduction from '../components/Introduction'
 import Newsletter from '../components/Newsletter'
@@ -15,11 +15,9 @@ const Home = () => {
             <Introduction />
             <Separator bg="hsl(180, 30%, 78%)" />
             <Gallery title="On Sale" subtitle="Discounted items in the market" sales={true} />
-            <Separator bg="hsl(180, 30%, 78%)" />
             <Gallery title="Trending Now" subtitle="Popular items in the market" />
             <Separator bg="hsl(180, 30%, 78%)" />
             <Sales />
-            <Separator />
             <Newsletter />
         </main>
     )
