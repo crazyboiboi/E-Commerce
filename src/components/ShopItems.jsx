@@ -1,9 +1,6 @@
 import React from 'react'
 import ShopItem from './ShopItem'
 
-import pic from '../assets/bag.png'
-import pic1 from '../assets/bottle.png'
-
 const ShopItems = ({ items, sales }) => {
     return (
         <div className="products container">

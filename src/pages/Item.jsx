@@ -4,9 +4,29 @@ import { useParams, Link } from 'react-router-dom'
 import ShopBanner from '../components/ShopBanner'
 import { commerce } from '../lib/commerce';
 
-const Item = () => {
+const minQuantity = 1;
+const maxQuantity = 20;
+
+const Item = ({ onAddToCart }) => {
     const [item, setItem] = useState(null);
+    const [quantity, setQuantity] = useState(1);
+
     const { id } = useParams();
+
+    const handleIncrement = () => {
+        const newQuantity = Math.min(Math.max(quantity + 1, minQuantity), maxQuantity);
+        setQuantity(newQuantity);
+    }
+
+    const handleDecrement = () => {
+        const newQuantity = Math.min(Math.max(quantity - 1, minQuantity), maxQuantity);
+        setQuantity(newQuantity);
+    }
+
+    const handleQuantityType = (value) => {
+        const newQuantity = Math.min(Math.max(value, minQuantity), maxQuantity);
+        setQuantity(newQuantity);
+    }
 
     const getItem = async () => {
         try {
@@ -54,11 +74,11 @@ const Item = () => {
                         </span>
                         <p>{item.description}</p>
                         <div className="amount">
-                            <button className="btn btn-circle">-</button>
-                            <input defaultValue="1" type="text" />
-                            <button className="btn btn-circle">+</button>
+                            <button className="btn btn-circle" onClick={() => handleDecrement()}>-</button>
+                            <input value={quantity} onChange={e => handleQuantityType(e.target.value)} type="text" />
+                            <button className="btn btn-circle" onClick={() => handleIncrement()}>+</button>
                         </div>
-                        <button className="btn btn-primary btn-submit">Add to Cart</button>
+                        <button className="btn btn-primary btn-submit" onClick={() => onAddToCart(item.id, quantity)}>Add to Cart</button>
                     </div>
                 </div>
             }

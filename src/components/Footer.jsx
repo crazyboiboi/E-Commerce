@@ -14,7 +14,7 @@ const Footer = () => {
 
             <p className="address">
                 <span><Room /> Address</span>
-                20, Blue Street, New York City, YAH 291, US
+                14 Wagon St. Columbia, MD 21044, US
             </p>
 
             <p className="phone">

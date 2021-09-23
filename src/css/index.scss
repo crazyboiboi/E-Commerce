@@ -199,6 +199,15 @@ body {
         background: var(--clr-gray);
         color: var(--clr-light);
     }
+
+    &-remove {
+        background: var(--clr-red);
+
+        &:hover {
+            background: var(--clr-lightgray);
+            border: transparent;
+        }
+    }
 }
 
 
@@ -283,6 +292,7 @@ body {
 @import "home.scss";
 @import "shop.scss";
 @import "item.scss";
+@import "cart.scss";
 
 
 

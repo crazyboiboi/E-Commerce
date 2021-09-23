@@ -4,12 +4,9 @@ import { Link } from 'react-router-dom'
 import { ShoppingCart } from '@material-ui/icons'
 import { Badge } from '@material-ui/core'
 
-import logo from '../assets/logo.svg'
-
 import Logo from './Logo'
 
-
-const Navbar = () => {
+const Navbar = ({ totalItems }) => {
     return (
         <nav className="navbar">
             <Link to="/">
@@ -27,15 +24,13 @@ const Navbar = () => {
                     <Link to="/contact" className="link">Contact</Link>
                 </li>
                 <li>
-                    <Link to="/contact" className="link">
-                        <Badge badgeContent={2} color="primary">
+                    <Link to="/cart" className="link">
+                        <Badge badgeContent={totalItems} color="primary">
                             <ShoppingCart />
                         </Badge>
                     </Link>
                 </li>
             </ul>
-
-
         </nav>
     )
 }

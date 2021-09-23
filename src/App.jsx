@@ -8,6 +8,7 @@ import Home from "./pages/Home"
 import Shop from './pages/Shop'
 import Item from './pages/Item'
 import Error from './pages/Error'
+import Cart from './pages/Cart.jsx'
 
 // Components
 import Navbar from "./components/Navbar"
@@ -27,6 +28,7 @@ const url = new URL(
 
 const App = () => {
   const [items, setItems] = useState([]);
+  const [cart, setCart] = useState({})
   const [discounts, setDiscounts] = useState([]);
 
 
@@ -42,12 +44,11 @@ const App = () => {
         })
         setItems(allItems);
       } else {
-        setItems([]);
+        setItems({});
       }
     } catch (error) {
       console.log(error);
     }
-
   }
 
   // Fetch all discounts from the API
@@ -70,8 +71,36 @@ const App = () => {
     }
   }
 
+  // Returns cart tracked by the customer's browser
+  const fetchCart = async () => {
+    const data = await commerce.cart.retrieve();
+
+    try {
+      if (Object.keys(data).length !== 0) {
+        setCart(data);
+      } else {
+        setCart({});
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  // Adds an item to the current cart
+  const handleAddToCart = async (productID, quantity) => {
+    const res = await commerce.cart.add(productID, quantity);
+    setCart(res.cart);
+  }
+
+  // Remove item from the cart
+  const handleRemoveFromCart = async (productID) => {
+    const res = await commerce.cart.remove(productID);
+    setCart(res.cart);
+  }
+
   useEffect(() => {
     fetchItems();
+    fetchCart();
   }, []);
 
   useEffect(() => {
@@ -81,7 +110,7 @@ const App = () => {
   return (
     <Router>
       <ScrollToTop />
-      <Navbar />
+      <Navbar totalItems={cart.total_items} />
       <Switch>
         <Route exact path="/">
           <Home items={items} />
@@ -89,8 +118,11 @@ const App = () => {
         <Route path="/shop">
           <Shop items={items} />
         </Route>
+        <Route path="/cart">
+          <Cart cart={cart} handleRemoveFromCart={handleRemoveFromCart} />
+        </Route>
         <Route path="/item/:id">
-          <Item />
+          <Item onAddToCart={handleAddToCart} />
         </Route>
         <Route path="*">
           <Error />
