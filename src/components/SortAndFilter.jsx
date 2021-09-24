@@ -15,12 +15,13 @@ const SortAndFilter = () => {
             </div>
 
             <div>
-                <label htmlFor="filter">Filter</label>
+                <label htmlFor="filter">Filter by Category</label>
                 <select name="filter" defaultValue={'DEFAULT'}>
                     <option disabled value={"DEFAULT"}>-- Select an option --</option>
-                    <option value="category">Category</option>
-                    <option value="color">Color</option>
-                    <option value="color">On Sale</option>
+                    <option value="sale">On Sale</option>
+                    <option value="beauty">Beauty</option>
+                    <option value="decor">Decor</option>
+                    <option value="accessories">Accessories</option>
                 </select>
             </div>
 

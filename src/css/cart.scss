@@ -67,3 +67,63 @@
         gap: 2rem;
     }
 }
+
+
+.checkout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "billing summary"
+        "billing payment ";
+    gap: 1rem 2rem;
+
+    &__section {
+        padding: 3rem;
+        border-radius: 2rem;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.02), 0 3px 6px rgba(0,0,0,0.1);
+
+        .form {
+            padding: 2rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem 2rem;
+        }
+
+        .field {
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+            font-size: var(--small-font-size);
+            width: 100%;
+            border: 1px solid var(--clr-lightgray);
+            border-radius: 0.25rem;
+        }
+
+        .span {
+            grid-column: 1 / -1;
+        }
+
+        &.billing {
+            grid-area: billing;
+        }
+
+        &.payment {
+            grid-area: payment;
+
+            .form {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+        }
+
+        &.summary {
+            grid-area: summary;
+            display: grid;
+            align-content: space-between;
+            background: var(--clr-lightgray);
+            box-shadow: none;
+
+            span {
+                float: right;
+            }
+        }
+    }
+}

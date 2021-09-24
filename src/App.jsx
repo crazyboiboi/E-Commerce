@@ -107,6 +107,7 @@ const App = () => {
     fetchDiscounts();
   }, []);
 
+  
   return (
     <Router>
       <ScrollToTop />

@@ -1,15 +1,15 @@
 import React from 'react'
-import { useForm, FormProvider } from 'react-hook-form'
 
-import CustomDropDownField from './Checkout/CustomDropDownField';
-import CustomTextField from './Checkout/CustomTextField'
-
-
+import AddressForm from './Checkout/AddressForm'
+import CheckoutSummary from './Checkout/CheckoutSummary'
+import PaymentForm from './Checkout/PaymentForm'
 
 const Checkout = () => {
     return (
         <div className="checkout">
             <AddressForm />
+            <PaymentForm />
+            <CheckoutSummary />
         </div>
     )
 }
