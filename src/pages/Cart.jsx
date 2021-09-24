@@ -6,7 +6,7 @@ import CartSummary from '../components/CartSummary'
 import Checkout from '../components/Checkout'
 
 
-const Cart = ({ cart, handleRemoveFromCart }) => {
+const Cart = ({ cart, handleRemoveFromCart, refreshCart }) => {
     let { path, url } = useRouteMatch();
     let history = useHistory();
     let location = useLocation();
@@ -30,7 +30,7 @@ const Cart = ({ cart, handleRemoveFromCart }) => {
                         <CartSummary cart={cart} handleRemoveFromCart={handleRemoveFromCart} />
                     </Route>
                     <Route path={`${path}/checkout`}>
-                        <Checkout cart={cart}/>
+                        <Checkout cart={cart} refreshCart={refreshCart} />
                     </Route>
                 </Switch>
 

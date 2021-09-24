@@ -49,7 +49,6 @@ const AddressForm = ({ checkoutToken, save }) => {
         const options = await commerce.checkout.getShippingOptions(checkoutTokenID, { country, region });
         setShippingOptions(options);
         setShippingOption(options[0].id);
-        console.log(checkoutToken);
     };
 
     useEffect(() => {

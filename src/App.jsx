@@ -98,6 +98,11 @@ const App = () => {
     setCart(res.cart);
   }
 
+  const refreshCart = async() => {
+    const newCart = await commerce.cart.refresh();
+    setCart(newCart);
+  }
+
   useEffect(() => {
     fetchItems();
     fetchCart();
@@ -120,7 +125,7 @@ const App = () => {
           <Shop items={items} />
         </Route>
         <Route path="/cart">
-          <Cart cart={cart} handleRemoveFromCart={handleRemoveFromCart} />
+          <Cart cart={cart} handleRemoveFromCart={handleRemoveFromCart} refreshCart={refreshCart} />
         </Route>
         <Route path="/item/:id">
           <Item onAddToCart={handleAddToCart} />
