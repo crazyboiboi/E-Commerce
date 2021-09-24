@@ -4,7 +4,7 @@ const CartItem = ({ item, onRemoveFromCart }) => {
     return (
         <div className="cart__item">
             <button className="btn btn-circle btn-remove" onClick={()=>onRemoveFromCart(item.id)}>X</button>
-            <img src={item.media.source} alt="cart image" />
+            <img src={item.media.source} alt="cart" />
             <p className="cart__item-name section__paragraph">{item.name}</p>
             <p className="section__paragraph">{item.price.formatted_with_symbol}</p>
             <p className="section__paragraph">{item.quantity}</p>

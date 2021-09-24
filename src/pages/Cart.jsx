@@ -18,8 +18,7 @@ const Cart = ({ cart, handleRemoveFromCart }) => {
             return <ShopBanner name="Checkout" />
         else
             return <ShopBanner />
-    }
-    
+    }    
 
     return (
         <main>
@@ -31,7 +30,7 @@ const Cart = ({ cart, handleRemoveFromCart }) => {
                         <CartSummary cart={cart} handleRemoveFromCart={handleRemoveFromCart} />
                     </Route>
                     <Route path={`${path}/checkout`}>
-                        <Checkout />
+                        <Checkout cart={cart}/>
                     </Route>
                 </Switch>
 
