@@ -165,6 +165,7 @@ body {
     color: black;
     background: var(--clr-light);
     transition: all 0.4s ease;
+    justify-content: center;
 
     &-primary {
         padding: 1rem 1.5rem;

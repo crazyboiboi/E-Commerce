@@ -121,6 +121,11 @@
             background: var(--clr-lightgray);
             box-shadow: none;
 
+            .section__tagline {
+                color: var(--clr-dark);
+                font-weight: var(--fw-regular);
+            }
+
             span {
                 float: right;
             }
