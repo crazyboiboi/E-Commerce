@@ -4,12 +4,12 @@ import ShopItems from '../components/ShopItems'
 import SortAndFilter from '../components/SortAndFilter'
 import ShopBanner from '../components/ShopBanner'
 
-const Shop = () => {
+const Shop = ({items}) => {
     return (
         <main>
             <ShopBanner name="All Products" />
             <SortAndFilter />
-            <ShopItems />
+            <ShopItems items={items}/>
         </main>
     )
 }

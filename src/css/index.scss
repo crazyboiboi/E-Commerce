@@ -165,6 +165,7 @@ body {
     color: black;
     background: var(--clr-light);
     transition: all 0.4s ease;
+    justify-content: center;
 
     &-primary {
         padding: 1rem 1.5rem;
@@ -198,6 +199,15 @@ body {
         justify-content: center;
         background: var(--clr-gray);
         color: var(--clr-light);
+    }
+
+    &-remove {
+        background: var(--clr-red);
+
+        &:hover {
+            background: var(--clr-lightgray);
+            border: transparent;
+        }
     }
 }
 
@@ -283,6 +293,7 @@ body {
 @import "home.scss";
 @import "shop.scss";
 @import "item.scss";
+@import "cart.scss";
 
 
 
@@ -315,11 +326,13 @@ body {
     &-content {
         padding: 1rem 0;
         text-align: center;
+        display: grid;
+        gap: 5px;
     }
 
     &-name {
         position: relative;
-        font-size: var(--big-font-size);
+        font-size: var(--medium-font-size);
         color: var(--clr-dark);
     }
 
@@ -330,7 +343,7 @@ body {
 
     &-price {
         position: relative;
-        font-size: var(--medium-font-size);
+        font-size: var(--small-font-size);
         color: var(--clr-softblue);
         display: inline-block;
 

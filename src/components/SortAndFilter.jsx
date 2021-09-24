@@ -4,9 +4,9 @@ const SortAndFilter = () => {
     return (
         <div className="sortfilter container">
             <div>
-                <label for="sort">Sort</label>
-                <select name="sort">
-                    <option disabled selected value> -- Select an option -- </option>
+                <label htmlFor="sort">Sort</label>
+                <select name="sort" defaultValue={'DEFAULT'}>
+                    <option disabled value={"DEFAULT"}>-- Select an option --</option>
                     <option value="asc">Ascending</option>
                     <option value="desc">Descending</option>
                     <option value="plow">Price Low</option>
@@ -15,12 +15,13 @@ const SortAndFilter = () => {
             </div>
 
             <div>
-                <label for="filter">Filter</label>
-                <select name="filter">
-                    <option disabled selected value> -- Select an option -- </option>
-                    <option value="category">Category</option>
-                    <option value="color">Color</option>
-                    <option value="color">On Sale</option>
+                <label htmlFor="filter">Filter by Category</label>
+                <select name="filter" defaultValue={'DEFAULT'}>
+                    <option disabled value={"DEFAULT"}>-- Select an option --</option>
+                    <option value="sale">On Sale</option>
+                    <option value="beauty">Beauty</option>
+                    <option value="decor">Decor</option>
+                    <option value="accessories">Accessories</option>
                 </select>
             </div>
 

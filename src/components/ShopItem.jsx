@@ -1,22 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const ShopItem = ({ name, category, price, image, sales }) => {
-
+const ShopItem = ({ item, sales }) => {
     return (
-        <Link to="/item">
+        <Link to={`/item/${item.id}`}>
             <div className="shop__item">
                 {
                     sales &&
-                    <div class="shop__item-banner">
+                    <div className="shop__item-banner">
                         <p>SALE ENDS: 12:32:25 </p>
                     </div>
                 }
-                <img src={image} alt={name} />
+                <img src={item.media.source} alt={item.name} />
                 <div className="shop__item-content">
-                    <p className="shop__item-category">{category}</p>
-                    <h1 className="shop__item-name">{name}</h1>
-                    <h4 className="shop__item-price">{price} {sales ? <span>{price}</span> : ''} </h4>
+                    <p className="shop__item-category">{item.categories[0].name}</p>
+                    <h1 className="shop__item-name">{item.name}</h1>
+                    <h4 className="shop__item-price">{item.price.formatted_with_symbol}
+                        {sales ? <span>{item.price.formatted_with_symbol}</span> : ''}
+                    </h4>
 
                 </div>
             </div>
