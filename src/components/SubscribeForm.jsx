@@ -10,7 +10,7 @@ const SubscribeForm = () => {
     return (
         <form className="form" onSubmit={handleSubmit(onSubmit)}>
             <input placeholder="Your email address" {...register("email")} />
-            <button className="btn btn-primary btn-submit"><Send /></button>
+            <button className="btn btn-submit blue"><Send /></button>
         </form>
     )
 }

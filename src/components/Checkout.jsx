@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { commerce } from '../lib/commerce'
 
@@ -8,8 +8,6 @@ import CheckoutSummary from './Checkout/CheckoutSummary'
 import PaymentForm from './Checkout/PaymentForm'
 
 const Checkout = ({ cart, refreshCart }) => {
-    const history = useHistory();
-
     const [checkoutToken, setCheckoutToken] = useState(null);
     const [shippingData, setShippingData] = useState({});
     const [order, setOrder] = useState({});
@@ -19,7 +17,7 @@ const Checkout = ({ cart, refreshCart }) => {
             const token = await commerce.checkout.generateToken(cart.id, { type: 'cart' });
             setCheckoutToken(token);
         } catch (error) {
-            history.push('/');
+            console.log(error);
         }
     }
 
@@ -48,9 +46,14 @@ const Checkout = ({ cart, refreshCart }) => {
                 <>
                     <AddressForm checkoutToken={checkoutToken} save={saveBillingDetails} />
                     <PaymentForm checkoutToken={checkoutToken} shippingData={shippingData} onCaptureCheckout={handleCaptureCheckout} />
-                    <CheckoutSummary checkoutToken={checkoutToken} shippingData={shippingData}/>
+                    <CheckoutSummary checkoutToken={checkoutToken} shippingData={shippingData} />
                 </>
             }
+            
+            <div className="cart__footer">
+                <Link to="/cart" className="btn btn-submit darkgray">Back</Link>
+                <Link to="/" className="btn btn-submit blue btn-disabled">Next</Link>
+            </div>
         </div>
     )
 }

@@ -15,7 +15,7 @@ const Introduction = () => {
                     elit. Suspendisse ac tortor ut ligula posuere porta. Nunc ultrices malesuada erat at
                     condimentum. Pellentesque faucibus lectus sit amet erat consequat finibus. Donec semper
                     ultricies elementum. </p>
-                <Link to="/shop" className="btn btn-primary">Browse Now
+                <Link to="/shop" className="btn btn-primary blue">Browse Now
                     <ArrowForward style={{fontSize: 'medium'}}/>
                 </Link>
             </div>

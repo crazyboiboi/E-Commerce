@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, Route, Switch, useRouteMatch, useHistory, useLocation } from 'react-router-dom'
+import { Route, Switch, useRouteMatch, useHistory, useLocation } from 'react-router-dom'
 
 import ShopBanner from '../components/ShopBanner'
 import CartSummary from '../components/CartSummary'
@@ -33,11 +33,6 @@ const Cart = ({ cart, handleRemoveFromCart, refreshCart }) => {
                         <Checkout cart={cart} refreshCart={refreshCart} />
                     </Route>
                 </Switch>
-
-                <div className="cart__footer">
-                    <button onClick={() => history.goBack()} className="btn btn-secondary">Back</button>
-                    <Link to={`${url}/checkout`} className="btn btn-submit">Next</Link>
-                </div>
             </div>
         </main>
     )

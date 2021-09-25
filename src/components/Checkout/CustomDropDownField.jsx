@@ -9,7 +9,7 @@ const CustomDropDownField = ({ name, label, options, handleChange }) => {
             render={() => (
                 <div>
                     <label htmlFor={name} className="section__paragraph">{label}</label><br />
-                    <select name={name} defaultValue={'DEFAULT'} className="field" onChange={e => handleChange(e.target.value)}>
+                    <select name={name} defaultValue={'DEFAULT'} className="field"  onChange={e => handleChange(e.target.value)}>
                         <option disabled value={"DEFAULT"}>-- Select an option --</option>
                         {options.map((option) => (
                             <option value={option.id} key={option.id}>{option.label}</option>

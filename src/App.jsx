@@ -28,6 +28,7 @@ const url = new URL(
 
 const App = () => {
   const [items, setItems] = useState([]);
+  const [saleItems, setSaleItems] = useState([]);
   const [cart, setCart] = useState({})
   const [discounts, setDiscounts] = useState([]);
 
@@ -60,7 +61,7 @@ const App = () => {
       });
 
       const { data } = await res.json();
-
+      
       if (data) {
         setDiscounts(data);
       } else {

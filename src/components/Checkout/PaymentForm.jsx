@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import { Link } from 'react-router-dom';
+
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements, CardElement, ElementsConsumer } from '@stripe/react-stripe-js';
 
@@ -7,6 +9,13 @@ import { CircularProgress } from '@material-ui/core';
 
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+
+const PaymentSuccessMessage = ({ orderRef }) => (
+    <div className="message">
+        Thank you for your purchase! Your order ref no. {orderRef}.
+        <Link to="/" className="btn btn-submit blue">Back to Home</Link>
+    </div>
+)
 
 const PaymentForm = ({ checkoutToken, shippingData, onCaptureCheckout }) => {
     const [error, setError] = useState(null);
@@ -86,13 +95,14 @@ const PaymentForm = ({ checkoutToken, shippingData, onCaptureCheckout }) => {
                         {({ elements, stripe }) => (
                             <form className="form" onSubmit={e => handleSubmit(e, stripe, elements)}>
                                 <CardElement className="span" />
-                                <button type="submit" className="btn btn-primary span" disabled={!stripe}>Pay $25.30</button>
+                                <button type="submit" className={`btn btn-submit blue span ${!stripe ? "btn-disabled" : ""}`} disabled={!stripe}>Pay $25.30</button>
                             </form>
                         )}
                     </ElementsConsumer>
                 </Elements>)
-                : !isFinished ? (<div> <CircularProgress /> </div>)
-                    : (<div>COMPLETED </div>)
+                : !isFinished ? 
+                    (<div className="message" style={{justifyItems: 'center'}}> <CircularProgress /> </div>)
+                    : <PaymentSuccessMessage orderRef="4721897849342" />
             }
         </div >
     )

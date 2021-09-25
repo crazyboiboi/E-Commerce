@@ -9,7 +9,7 @@ const Gallery = ({ title, subtitle, items, sales }) => {
             <div className="gallery__header">
                 <h1 className="section__title">{title}</h1>
                 <div>
-                    <Link to="/shop" className="btn btn-secondary">See More</Link>
+                    <Link to="/shop" className="btn btn-secondary gray">See More</Link>
                 </div>
                 <h4 className="section__paragraph">{subtitle}</h4>
             </div>

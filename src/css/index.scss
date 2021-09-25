@@ -156,34 +156,33 @@ body {
 .btn {
     display: flex;
     align-items: center;
+    justify-content: center;
+    padding: 1rem 1.5rem;
     border: 2px solid transparent;
     cursor: pointer;
-    line-height: inherit;
     font-family: var(--body-font);
     font-weight: var(--fw-mediumbold);
     font-size: var(--small-font-size);
-    color: black;
-    background: var(--clr-light);
-    transition: all 0.4s ease;
-    justify-content: center;
+    transition: opacity 0.4s ease,
+                background-color 0.2s ease;
+
+    &:hover {
+        transition: opacity 0.4s ease,
+                    background-color 0.2s ease;
+    }
 
     &-primary {
-        padding: 1rem 1.5rem;
         border-radius: 2rem;
-        background: var(--clr-softblue);
-        color: var(--clr-light);
     }
 
     &-secondary {
         padding: 0.5rem 1rem;
         border-radius: 0.5rem;
     }
-    
-    &:hover {
-        background-color: var(--clr-lightgray);
-        border: 2px solid var(--clr-dark);
-        color: var(--clr-dark);
-        transition: all 0.2s ease;
+
+    &-disabled {
+        opacity: 0.5;
+        pointer-events: none;
     }
 
     &-submit {
@@ -192,23 +191,53 @@ body {
     }
 
     &-circle {
+        padding: initial;
         border-radius: 50%;
         width: var(--big-font-size);
         height: var(--big-font-size);
-        display: flex;
-        justify-content: center;
         background: var(--clr-gray);
         color: var(--clr-light);
+
+        &:hover {
+            opacity: 0.8;
+        }
     }
 
-    &-remove {
+    &.blue {
+        background: var(--clr-softblue);
+        color: var(--clr-light);
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    &.gray {
+        background: var(--clr-light);
+        color: var(--clr-darkblue);
+
+        &:hover {
+            background: var(--clr-lightgray);
+        }
+    }
+
+    &.darkgray {
+        background: var(--clr-gray);
+        color: var(--clr-light);
+
+        &:hover {
+            background: var(--clr-lightgray);
+        }
+    }
+
+    &.red {
         background: var(--clr-red);
 
         &:hover {
             background: var(--clr-lightgray);
             border: transparent;
         }
-    }
+    }    
 }
 
 

@@ -7,8 +7,10 @@ import CustomDropDownField from './CustomDropDownField'
 import CustomTextField from './CustomTextField';
 
 const AddressForm = ({ checkoutToken, save }) => {
-    const methods = useForm();
+    const methods = useForm({mode: 'onChange'});
+    const {isValid, isDirty} = methods.formState;
 
+    const [isShippingFieldEmpty, setIsShippingFieldEmpty] = useState(true);
     const [shippingCountries, setShippingCountries] = useState([])
     const [shippingCountry, setShippingCountry] = useState('')
     const [shippingSubdivisions, setShippingSubdivisions] = useState([])
@@ -48,7 +50,7 @@ const AddressForm = ({ checkoutToken, save }) => {
     const fetchShippingOptions = async (checkoutTokenID, country, region = null) => {
         const options = await commerce.checkout.getShippingOptions(checkoutTokenID, { country, region });
         setShippingOptions(options);
-        setShippingOption(options[0].id);
+        // setShippingOption(options[0].id);
     };
 
     useEffect(() => {
@@ -57,6 +59,13 @@ const AddressForm = ({ checkoutToken, save }) => {
     }, [checkoutToken.id, shippingCountry, shippingSubdivision]);
 
 
+    // Validation for shipping field
+    useEffect(() => {
+        const empty = (shippingCountry === '' || shippingSubdivision === '' || shippingOption === '')
+        setIsShippingFieldEmpty(empty);
+    }, [shippingCountry, shippingSubdivision, shippingOption])
+
+    
     return (
         <div className="checkout__section billing">
             <h1 className="section__title">Billing Details</h1>
@@ -72,14 +81,20 @@ const AddressForm = ({ checkoutToken, save }) => {
                     <CustomDropDownField name='shippingCountry' label='Shipping Country' options={countries} handleChange={setShippingCountry} />
                     <CustomDropDownField name='shippingSubdivision' label='Shipping Subdivision' options={subdivisions} handleChange={setShippingSubdivision} />
                     <CustomDropDownField name='shippingOption' label='Shipping Option' options={options} handleChange={setShippingOption} />
-                    <button 
+                    <div />
+                    <button
                         onClick={methods.handleSubmit((data) => save({ ...data, shippingCountry, shippingSubdivision, shippingOption }))}
-                        className="btn btn-primary"> Save
+                        className={`btn btn-submit blue span ${isShippingFieldEmpty || !isValid || !isDirty ? 'btn-disabled' : ''}`}> Save
                     </button>
                 </form>
             </FormProvider>
+
+
         </div>
     )
 }
 
 export default AddressForm
+
+
+// 
