@@ -28,10 +28,7 @@ const url = new URL(
 
 const App = () => {
   const [items, setItems] = useState([]);
-  const [saleItems, setSaleItems] = useState([]);
   const [cart, setCart] = useState({})
-  const [discounts, setDiscounts] = useState([]);
-
 
   // Fetch all items from the API
   const fetchItems = async () => {
@@ -41,31 +38,12 @@ const App = () => {
       if (data) {
         const allItems = data.map((item) => {
           const { id, name, categories, price, description, media } = item;
-          return { id, name, categories, price, description, media };
+          return { id, name, categories, price, description, media, discounted_price: price };
         })
+
         setItems(allItems);
       } else {
         setItems({});
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  // Fetch all discounts from the API
-  const fetchDiscounts = async () => {
-    try {
-      const res = await fetch(url + 'discounts', {
-        method: "GET",
-        headers: headers,
-      });
-
-      const { data } = await res.json();
-      
-      if (data) {
-        setDiscounts(data);
-      } else {
-        setDiscounts([]);
       }
     } catch (error) {
       console.log(error);
@@ -99,7 +77,7 @@ const App = () => {
     setCart(res.cart);
   }
 
-  const refreshCart = async() => {
+  const refreshCart = async () => {
     const newCart = await commerce.cart.refresh();
     setCart(newCart);
   }
@@ -109,11 +87,7 @@ const App = () => {
     fetchCart();
   }, []);
 
-  useEffect(() => {
-    fetchDiscounts();
-  }, []);
 
-  
   return (
     <Router>
       <ScrollToTop />

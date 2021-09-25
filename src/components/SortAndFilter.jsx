@@ -18,14 +18,11 @@ const SortAndFilter = () => {
                 <label htmlFor="filter">Filter by Category</label>
                 <select name="filter" defaultValue={'DEFAULT'}>
                     <option disabled value={"DEFAULT"}>-- Select an option --</option>
-                    <option value="sale">On Sale</option>
                     <option value="beauty">Beauty</option>
                     <option value="decor">Decor</option>
                     <option value="accessories">Accessories</option>
                 </select>
             </div>
-
-            {/* FILTERED PHRASES SHOW HERE */}
         </div>
     )
 }

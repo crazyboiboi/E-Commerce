@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom'
 
 import ShopItem from './ShopItem'
 
-const Gallery = ({ title, subtitle, items, sales }) => {
+const Gallery = ({ title, subtitle, items, category }) => {
+    const displayedItems = category === "" ? items : items.filter((item) => category === item.categories[0].name);
+
     return (
         <div className="gallery container">
             <div className="gallery__header">
@@ -15,8 +17,8 @@ const Gallery = ({ title, subtitle, items, sales }) => {
             </div>
             <div className="gallery__items">
                 {
-                    items.filter((item, idx) => idx < 4).map(item => (
-                        <ShopItem key={item.id} item={item} sales={sales} />
+                    displayedItems.filter((item, idx) => idx < 4).map(item => (
+                        <ShopItem key={item.id} item={item} />
                     ))
                 }
             </div>
@@ -25,7 +27,7 @@ const Gallery = ({ title, subtitle, items, sales }) => {
 }
 
 Gallery.defaultProps = {
-    sales: false,
+    category: "",
 }
 
 export default Gallery
