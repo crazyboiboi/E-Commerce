@@ -5,20 +5,21 @@ import { commerce } from '../../lib/commerce';
 const CheckoutSummary = ({ checkoutToken, shippingData }) => {
     const [summary, setSummary] = useState({});
 
-    const fetchSummary = async () => {
-        const res = await commerce.checkout.checkShippingOption(checkoutToken.id, {
-            shipping_option_id: shippingData.shippingOption,
-            country: shippingData.shippingCountry,
-            region: shippingData.shippingSubdivision,
-        })
-
-        setSummary(res);
-    }
+    
 
     useEffect(() => {
+        const fetchSummary = async () => {
+            const res = await commerce.checkout.checkShippingOption(checkoutToken.id, {
+                shipping_option_id: shippingData.shippingOption,
+                country: shippingData.shippingCountry,
+                region: shippingData.shippingSubdivision,
+            })
+    
+            setSummary(res);
+        }
         if (Object.keys(shippingData).length && shippingData.shippingOption !== '')
             fetchSummary();
-    }, [shippingData]);
+    }, [shippingData, checkoutToken.id]);
 
     let subtotal = checkoutToken.live.subtotal.formatted_with_symbol;
     let discount = checkoutToken.live.discount.length ? "100%" : "$0.00";

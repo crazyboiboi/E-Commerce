@@ -41,8 +41,6 @@ const Checkout = ({ cart, refreshCart }) => {
     const saveBillingDetails = (data) => {
         setShippingData(data);
     }
-    // console.log(shippingData);
-
 
     return (
         <div className="checkout">

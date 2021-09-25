@@ -19,6 +19,14 @@ const PaymentForm = ({ checkoutToken, shippingData, onCaptureCheckout }) => {
         }, 3000);
     }
 
+    /* To enable the stripe gateway, you need to add it to the chec dashboard (which
+       requires a credit card). Thus I will be using the test gateway to show transactions
+       can be done. Below is the code to replace the payment field.
+       gateway: 'stripe',
+           stripe: {
+           payment_method_id: paymentMethod.id,
+       }, 
+    */
     const getOrderData = (paymentMethod) => {
         return {
             line_items: checkoutToken.live.line_items,
@@ -37,9 +45,13 @@ const PaymentForm = ({ checkoutToken, shippingData, onCaptureCheckout }) => {
             },
             fulfillment: { shipping_method: shippingData.shippingOption, },
             payment: {
-                gateway: 'stripe',
-                stripe: {
-                    payment_method_id: paymentMethod.id,
+                gateway: 'test_gateway',
+                card: {
+                    number: '4242424242424242',
+                    expiry_month: '02',
+                    expiry_year: '24',
+                    cvc: '123',
+                    postal_zip_code: '94107',
                 },
             },
         }
@@ -79,8 +91,8 @@ const PaymentForm = ({ checkoutToken, shippingData, onCaptureCheckout }) => {
                         )}
                     </ElementsConsumer>
                 </Elements>)
-                : !isFinished ? ( <div> <CircularProgress /> </div> ) 
-                : (<div>COMPLETED </div>)                
+                : !isFinished ? (<div> <CircularProgress /> </div>)
+                    : (<div>COMPLETED </div>)
             }
         </div >
     )

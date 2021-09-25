@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import React, { useState, useEffect, useCallback } from 'react'
+import { useParams } from 'react-router-dom'
 
 import ShopBanner from '../components/ShopBanner'
 import { commerce } from '../lib/commerce';
@@ -28,7 +28,7 @@ const Item = ({ onAddToCart }) => {
         setQuantity(newQuantity);
     }
 
-    const getItem = async () => {
+    const getItem = useCallback(async () => {
         try {
             const item = await commerce.products.retrieve(id);
             if (item) {
@@ -51,11 +51,11 @@ const Item = ({ onAddToCart }) => {
         } catch (error) {
             console.log(error);
         }
-    }
+    }, [id]);
 
     useEffect(() => {
         getItem();
-    }, [id])
+    }, [id, getItem])
 
     return (
         <main>
