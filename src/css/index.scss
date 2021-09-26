@@ -28,7 +28,7 @@
 
     --biggest-font-size: 1.75rem;
     --big-font-size: 1.5rem;
-    --medium-font-size: 1rem;
+    --medium-font-size: 1.1rem;
     --small-font-size: 0.85rem;
 
     // For tablet and PC devices
@@ -110,12 +110,36 @@ body {
 .container {
     position: relative;
     display: grid;
-    padding: 4rem 12rem;
+    padding: 4rem 1.5rem;
 }
 
 .separator {
     position: relative;
-    padding: 3rem 0;
+    padding: 1rem 0;
+}
+
+@media screen and (min-width: 625px) {
+    .container {
+        padding: 4rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .container {
+        padding: 4rem 6rem;
+    }
+}
+
+@media screen and (min-width: 1190px) {    
+    .container {
+        padding: 4rem 10rem;
+    }
+}
+
+@media screen and (min-width: 1440px) {    
+    .container {
+        padding: 4rem 12rem;
+    }
 }
 
 
@@ -242,59 +266,109 @@ body {
 
 
 /* ========== NAVBAR ========== */
-.navbar {
+.header {
     position: fixed;
     width: 100%;
-    top: 0;
+    top: 0; 
     z-index: 10;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 3rem;
     background: var(--clr-light);
 
-    &__links {
+    .navbar {
         display: flex;
-        gap: 2.5rem;
-        margin-right: 2rem;
+        justify-content: space-between;
+        align-items: center;
+        height: var(--header-height);
+        padding: 1rem 3rem;
+
+        &__links {
+            display: flex;
+            gap: 2.5rem;
+            margin-right: 2rem;
+        }
+
+        &__buttons {
+            color: var(--clr-darkblue);
+            cursor: pointer;
+        }
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .header {
+        .navbar {
+            padding: 1rem;
+
+            &__logo {
+                transform: scale(0.7);
+                transform-origin: 0 50%;
+            }
+
+            &__links {
+                position: fixed;
+                flex-direction: column;
+                gap: 0;
+                margin-right: 0;
+                top: var(--header-height);
+                left: 0;
+                right: 0;
+                height: 0;
+                background: var(--clr-light);
+                transition: height 0.4s ease;
+
+                li {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 55px; 
+                    visibility: hidden;  
+                    opacity: 0;                    
+                }
+
+                &.menu-active {
+                    height: 220px;
+                    transition: height 0.4s ease;
+
+                    li {
+                        visibility: initial;
+                        opacity: 1;
+                        transition: opacity 0.2s ease 0.4s;
+                    }
+                }
+            }
+            
+            .overlay {
+                position: fixed;
+                inset: 0;
+                top: var(--header-height);
+                background: rgba(0.5, 0.5, 0.5, 0.2);
+            }
+        }
     }
 }
 
 
+
 /* ========== FOOTER ========== */
 .footer {
-    grid-template-areas: 
-        "email address . . logo"
-        "phone socials . . logo";
-    row-gap: 20px;
     background: var(--clr-darkblue);
+    row-gap: 20px;
+    justify-items: center;
 
-    p {
-        line-height: 1.3rem;
+    .email, .address, .phone, .logo {
+        width: 100%;
+        display: grid;
+        justify-items: center;
     }
 
-    span {
+    p {
         display: flex;
         align-items: center;
         gap: 10px;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.25rem;
         color: var(--clr-orange);
     }
 
-    .email {
-        grid-area: email;
-    }
-
-    .address {
-        grid-area: address;
-    }
-
-    .phone {
-        grid-area: phone;
-    }
-
     .logo {
-        grid-area: logo;
         justify-self: flex-end;
         align-self: flex-end;
         
@@ -304,9 +378,9 @@ body {
     }
 
     .socials {
-        grid-area: socials;
+        padding: 1rem 0;
         display: flex;
-        gap: 1.5rem;
+        gap: 1rem;
         align-self: center;
 
         .link {
@@ -319,17 +393,44 @@ body {
     }
 }
 
-@import "home.scss";
-@import "shop.scss";
-@import "item.scss";
-@import "cart.scss";
+@media screen and (min-width:768px) {
+    .footer {
+        grid-template-areas: 
+        "email address . . logo"
+        "phone socials . . logo";
+
+        .email {
+            grid-area: email;
+            justify-items: flex-start;
+        }
+    
+        .address {
+            grid-area: address;
+            justify-items: flex-start;
+        }
+    
+        .phone {
+            grid-area: phone;
+            justify-items: flex-start;
+        }
+
+        .logo {
+            grid-area: logo;
+        }
+    
+        .socials {
+            grid-area: socials;
+            justify-self: flex-start;
+        }
+    }
+}
 
 
 /* ========== ERROR ========== */
 .error {
     display: grid;
-    gap: 20px;
-    justify-items: flex-start;
+    gap: 30px;
+    justify-items: center;
 }
 
 
@@ -337,6 +438,7 @@ body {
 .shop__item {
     background: white;
     box-shadow: 4px 8px 8px rgba(0.5, 0.5, 0.5, 0.1);
+    min-height: 240px;
 
     &:hover {
         border: 1px solid var(--clr-gray);
@@ -359,7 +461,7 @@ body {
     }
 
     &-content {
-        padding: 1rem 0;
+        padding: 1rem 0.2rem;
         text-align: center;
         display: grid;
         gap: 5px;
@@ -392,3 +494,8 @@ body {
         }
     }
 }
+
+@import "home.scss";
+@import "shop.scss";
+@import "item.scss";
+@import "cart.scss";

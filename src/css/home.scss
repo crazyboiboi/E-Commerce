@@ -1,18 +1,21 @@
 
 /* ========== INTRODUCTION ========== */
 .introduction {
-    padding: 4rem;
-    grid-template-columns: 1fr 1fr;
+    padding: 4rem 1rem;
     background: var(--clr-glacier);
 
     &__content {
-        padding: 2rem 4rem;
+        padding: 2rem 1rem;
         display: grid;
-        justify-items: flex-start;
+        justify-items: center;
         gap: 20px;
 
         .section__title {
             font-size: var(--biggest-font-size);
+        }
+
+        .section__title, .section__tagline, .section__paragraph {
+            text-align: center;
         }
     }
 }
@@ -23,21 +26,20 @@
     background: var(--clr-skyblue);
 
     &__header {
+        position: relative;
         display: grid;
-        grid-template-columns: 1fr 1fr;
 
         div {
-            grid-column-start: 2;
-            grid-row: 1 / span 2;
-            justify-self: flex-end;
-            align-self: center;
+            position: absolute;
+            top: 0;
+            right: 0;
         }
     }
 
     &__items {
         padding: 2rem 0;
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
 }
@@ -45,16 +47,14 @@
 
 /* ========== SALES ========== */
 .sales {
-    grid-template-columns: 1fr 1fr;
-
     &__content {
         max-width: 600px;
-        padding: 2rem;
+        padding: 1.5rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: flex-start;
-        gap: 20px;
+        align-items: center;
+        gap: 1rem;
 
         .section__title {
             font-size: var(--biggest-font-size);
@@ -63,10 +63,14 @@
         .section__tagline {
             color: var(--clr-gray);
         }
+
+        .section__paragraph {
+            text-align: center;
+        }
     }
 
     img {
-        max-width: 80%;
+        max-width: 65%;
         margin: auto;
     }
 }
@@ -80,9 +84,11 @@
 
     .section__title {
         font-size: var(--biggest-font-size);
+        text-align: center;
     }
 
     .section__tagline {
+        text-align: center;
         color: var(--clr-gray); 
     }
 
@@ -92,12 +98,89 @@
 
         input {
             border-radius: 0.5rem;
-            width: 400px;
+            max-width: 400px;
             padding: 0 1rem;
         }
 
         input:focus {
             border: 1px solid var(--clr-lightgray);
+        }
+    }
+}
+
+
+
+
+
+/* =================================== */
+/* ========== MEDIA QUERIES ========== */
+/* =================================== */
+
+@media screen and (min-width: 625px) {
+    .introduction {
+        padding: 4rem;
+    }
+
+    .newsletter {
+        .form {
+            input {
+                max-width: unset;
+                min-width: 400px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .introduction {
+        padding: 1rem;
+        grid-template-columns: 1fr 1fr;
+
+        &__content {
+            justify-items: flex-start;
+            
+            .section__title, .section__tagline, .section__paragraph {
+                text-align: initial;
+            }
+        }
+
+        img {
+            margin: auto;
+        }
+    }
+
+    .gallery {
+        &__items {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    .sales {
+        grid-template-columns: 1fr 1fr;
+
+        &__content {
+            align-items: flex-start;
+
+            .section__paragraph {
+                text-align: initial;
+            }
+        }
+
+        img {
+            max-width: 100%;
+        }
+    }
+}
+
+
+@media screen and (min-width: 1024px) {   
+    .introduction {
+        padding: 4rem;
+    }
+    
+    .sales {
+        img {
+            max-width: 80%;
         }
     }
 }

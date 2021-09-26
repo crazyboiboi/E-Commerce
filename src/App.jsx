@@ -92,23 +92,23 @@ const App = () => {
     <Router>
       <ScrollToTop />
       <Navbar totalItems={cart.total_items} />
-      <Switch>
-        <Route exact path="/">
-          <Home items={items} />
-        </Route>
-        <Route path="/shop">
-          <Shop items={items} />
-        </Route>
-        <Route path="/cart">
-          <Cart cart={cart} handleRemoveFromCart={handleRemoveFromCart} refreshCart={refreshCart} />
-        </Route>
-        <Route path="/item/:id">
-          <Item onAddToCart={handleAddToCart} />
-        </Route>
-        <Route path="*">
-          <Error />
-        </Route>
-      </Switch>
+        <Switch>
+          <Route exact path="/">
+            <Home items={items} />
+          </Route>
+          <Route path="/shop">
+            <Shop items={items} />
+          </Route>
+          <Route path="/cart">
+            <Cart cart={cart} handleRemoveFromCart={handleRemoveFromCart} refreshCart={refreshCart} />
+          </Route>
+          <Route path="/item/:id">
+            <Item onAddToCart={handleAddToCart} />
+          </Route>
+          <Route path="*">
+            <Error />
+          </Route>
+        </Switch>
       <Footer />
     </Router>
   );

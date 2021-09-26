@@ -7,26 +7,19 @@ import Logo from '../components/Logo'
 const Footer = () => {
     return (
         <footer className="footer container">
-            <p className="email">
-                <span><Email />Email</span>
-                commerce@gmail.com
-            </p>
+            <div className="email">
+                <p><Email />Email</p>
+                <span>commerce@gmail.com</span>
+            </div>            
 
-            <p className="address">
-                <span><Room /> Address</span>
-                14 Wagon St. Columbia, MD 21044, US
-            </p>
+            <div className="address">
+                <p><Room /> Address</p>
+                <span>14 Wagon St. Columbia, MD 21044, US</span>
+            </div>
 
-            <p className="phone">
-                <span><Phone />Contact Number</span>
-                +8319284891
-            </p>
-
-            <div className="logo">
-                <Link to="/">
-                    <Logo color="white" />
-                </Link>
-                <p>Copyright &copy; 2021 Commerce</p>
+            <div className="phone">
+                <p><Phone />Contact Number</p>
+                <span>+8319284891</span>
             </div>
 
             <ul className="socials">
@@ -44,8 +37,12 @@ const Footer = () => {
                 </li>
             </ul>
 
-
-
+            <div className="logo">
+                <Link to="/">
+                    <Logo color="white" />
+                </Link>
+                <p>Copyright &copy; 2021 Commerce</p>
+            </div>
         </footer>
     )
 }

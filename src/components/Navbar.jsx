@@ -1,37 +1,60 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Link } from 'react-router-dom'
-import { ShoppingCart } from '@material-ui/icons'
+import { ShoppingCart, Menu, Close } from '@material-ui/icons'
 import { Badge } from '@material-ui/core'
 
 import Logo from './Logo'
 
 const Navbar = ({ totalItems }) => {
-    return (
-        <nav className="navbar">
-            <Link to="/">
-                <Logo />
-            </Link>
+    const [isMenuActive, setIsMenuActive] = useState(false);
 
-            <ul className="navbar__links">
-                <li>
-                    <Link to="/" className="link">Home</Link>
-                </li>
-                <li>
-                    <Link to="/shop" className="link">Shop</Link>
-                </li>
-                <li>
-                    <Link to="/contact" className="link">Contact</Link>
-                </li>
-                <li>
-                    <Link to="/cart" className="link">
+    return (
+        <header className="header">
+            <nav className="navbar">
+                {
+                    isMenuActive &&
+                    <div className="overlay mobile" />
+                }
+
+                <Link to="/" className="navbar__logo">
+                    <Logo />
+                </Link>
+
+                <ul className={`navbar__links ${isMenuActive && "menu-active"}`}>
+                    <li>
+                        <Link onClick={() => setIsMenuActive(false)} to="/" className="link">Home</Link>
+                    </li>
+                    <li>
+                        <Link onClick={() => setIsMenuActive(false)} to="/shop" className="link">Shop</Link>
+                    </li>
+                    <li>
+                        <Link onClick={() => setIsMenuActive(false)} to="/contact" className="link">Contact</Link>
+                    </li>
+                    <li>
+                        <Link onClick={() => setIsMenuActive(false)} to="/cart" className="link">
+                            <Badge badgeContent={totalItems} color="primary">
+                                <ShoppingCart />
+                            </Badge>
+                        </Link>
+                    </li>
+                </ul>
+
+                {/* Hamburger */}
+                <div className="navbar__buttons mobile">
+                    {!isMenuActive &&
                         <Badge badgeContent={totalItems} color="primary">
-                            <ShoppingCart />
+                            <Menu onClick={() => setIsMenuActive(true)} />
                         </Badge>
-                    </Link>
-                </li>
-            </ul>
-        </nav>
+                    }
+
+                    {isMenuActive &&
+                        <Close onClick={() => setIsMenuActive(false)} />
+                    }
+                </div>
+            </nav>
+        </header>
+
     )
 }
 
