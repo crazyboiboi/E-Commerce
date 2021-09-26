@@ -108,9 +108,20 @@
 
         &.payment {
             grid-area: payment;
+            display: flex;
+            flex-direction: column;
+            height: 334px;
 
             .form {
                 grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+
+            .message {
+                padding: 2rem 0;
+                justify-self: center;
+                color: var(--clr-darkblue);
+                display: grid;
+                gap: 20px;
             }
         }
 
@@ -120,6 +131,7 @@
             align-content: space-between;
             background: var(--clr-lightgray);
             box-shadow: none;
+            height: 392px;
 
             .section__tagline {
                 color: var(--clr-dark);

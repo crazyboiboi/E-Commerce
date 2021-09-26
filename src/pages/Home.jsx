@@ -9,13 +9,13 @@ const Separator = ({ bg }) => {
     return <div className="separator" style={{ background: `${bg}` }}></div>
 }
 
-const Home = ({ items }) => {
+const Home = ({ items }) => {    
     return (
         <main>
             <Introduction />
             <Separator bg="hsl(180, 30%, 78%)" />
-            <Gallery title="On Sale" subtitle="Discounted items in the market" sales={true} items={items} />
             <Gallery title="Trending Now" subtitle="Popular items in the market" items={items} />
+            <Gallery title="Accessories" subtitle="Category of the day" items={items} category="Accessories" />
             <Separator bg="hsl(180, 30%, 78%)" />
             <Sales />
             <Newsletter />

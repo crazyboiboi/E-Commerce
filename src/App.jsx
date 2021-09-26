@@ -29,8 +29,6 @@ const url = new URL(
 const App = () => {
   const [items, setItems] = useState([]);
   const [cart, setCart] = useState({})
-  const [discounts, setDiscounts] = useState([]);
-
 
   // Fetch all items from the API
   const fetchItems = async () => {
@@ -40,31 +38,12 @@ const App = () => {
       if (data) {
         const allItems = data.map((item) => {
           const { id, name, categories, price, description, media } = item;
-          return { id, name, categories, price, description, media };
+          return { id, name, categories, price, description, media, discounted_price: price };
         })
+
         setItems(allItems);
       } else {
         setItems({});
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  // Fetch all discounts from the API
-  const fetchDiscounts = async () => {
-    try {
-      const res = await fetch(url + 'discounts', {
-        method: "GET",
-        headers: headers,
-      });
-
-      const { data } = await res.json();
-
-      if (data) {
-        setDiscounts(data);
-      } else {
-        setDiscounts([]);
       }
     } catch (error) {
       console.log(error);
@@ -98,37 +77,38 @@ const App = () => {
     setCart(res.cart);
   }
 
+  const refreshCart = async () => {
+    const newCart = await commerce.cart.refresh();
+    setCart(newCart);
+  }
+
   useEffect(() => {
     fetchItems();
     fetchCart();
   }, []);
 
-  useEffect(() => {
-    fetchDiscounts();
-  }, []);
 
-  
   return (
     <Router>
       <ScrollToTop />
       <Navbar totalItems={cart.total_items} />
-      <Switch>
-        <Route exact path="/">
-          <Home items={items} />
-        </Route>
-        <Route path="/shop">
-          <Shop items={items} />
-        </Route>
-        <Route path="/cart">
-          <Cart cart={cart} handleRemoveFromCart={handleRemoveFromCart} />
-        </Route>
-        <Route path="/item/:id">
-          <Item onAddToCart={handleAddToCart} />
-        </Route>
-        <Route path="*">
-          <Error />
-        </Route>
-      </Switch>
+        <Switch>
+          <Route exact path="/">
+            <Home items={items} />
+          </Route>
+          <Route path="/shop">
+            <Shop items={items} />
+          </Route>
+          <Route path="/cart">
+            <Cart cart={cart} handleRemoveFromCart={handleRemoveFromCart} refreshCart={refreshCart} />
+          </Route>
+          <Route path="/item/:id">
+            <Item onAddToCart={handleAddToCart} />
+          </Route>
+          <Route path="*">
+            <Error />
+          </Route>
+        </Switch>
       <Footer />
     </Router>
   );

@@ -6,17 +6,18 @@ const CustomTextField = ({ name, label, span }) => {
     const { control } = useFormContext();
 
     return (
-            <Controller
-                render={() => (
-                    <div className={`${span}`}>
-                        <label htmlFor={name} className="section__paragraph">{label}</label><br/>
-                        <input type="text" id={name} className="field"/>
-                    </div>
-                )}
-                control={control}
-                name={name}
-                defaultValue=""
-            />
+        <Controller
+            render={({ field: { onChange, value } }) => (
+                <div className={`${span}`}>
+                    <label htmlFor={name} className="section__paragraph">{label}</label><br />
+                    <input type="text" id={name} className="field" value={value} onChange={onChange} />
+                </div>
+            )}
+            control={control}
+            name={name}
+            defaultValue=""
+            rules={{ required: true }}
+        />
     )
 }
 
