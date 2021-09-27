@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import { commerce } from '../lib/commerce'
 
@@ -8,6 +8,8 @@ import CheckoutSummary from './Checkout/CheckoutSummary'
 import PaymentForm from './Checkout/PaymentForm'
 
 const Checkout = ({ cart, refreshCart }) => {
+    const history = useHistory();
+
     const [checkoutToken, setCheckoutToken] = useState(null);
     const [shippingData, setShippingData] = useState({});
     const [order, setOrder] = useState({});
@@ -18,6 +20,7 @@ const Checkout = ({ cart, refreshCart }) => {
             setCheckoutToken(token);
         } catch (error) {
             console.log(error);
+            history.push('/error');
         }
     }
 
@@ -45,15 +48,11 @@ const Checkout = ({ cart, refreshCart }) => {
             {checkoutToken &&
                 <>
                     <AddressForm checkoutToken={checkoutToken} save={saveBillingDetails} />
-                    <PaymentForm checkoutToken={checkoutToken} shippingData={shippingData} onCaptureCheckout={handleCaptureCheckout} />
                     <CheckoutSummary checkoutToken={checkoutToken} shippingData={shippingData} />
+                    <PaymentForm checkoutToken={checkoutToken} shippingData={shippingData} onCaptureCheckout={handleCaptureCheckout} />
+                    <Link to="/cart" className="btn btn-submit darkgray back-btn">Back</Link>
                 </>
             }
-            
-            <div className="cart__footer">
-                <Link to="/cart" className="btn btn-submit darkgray">Back</Link>
-                <Link to="/" className="btn btn-submit blue btn-disabled">Next</Link>
-            </div>
         </div>
     )
 }

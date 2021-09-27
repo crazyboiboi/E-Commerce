@@ -73,11 +73,12 @@ const Item = ({ onAddToCart }) => {
                             {item.categories[0].name}
                         </span>
                         <p>{item.description}</p>
-                        <div className="amount">
+                        <div className="quantity">
                             <button className="btn btn-circle" onClick={() => handleDecrement()}>-</button>
                             <input value={quantity} onChange={e => handleQuantityType(e.target.value)} type="text" />
                             <button className="btn btn-circle" onClick={() => handleIncrement()}>+</button>
                         </div>
+
                         <button className="btn btn-submit blue" onClick={() => onAddToCart(item.id, quantity)}>Add to Cart</button>
                     </div>
                 </div>

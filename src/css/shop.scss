@@ -1,6 +1,6 @@
 /* ========== SHOP BANNER ========== */
 .banner {
-    padding: 4rem 12rem;
+    padding: 2rem;
     background: var(--clr-glacier);
     text-align: center;
     font-size: var(--biggest-font-size);
@@ -8,12 +8,19 @@
     color: var(--clr-gray);
 }
 
+@media screen and (min-width: 768px) {
+    .banner {
+        padding: 3rem;
+    }
+}
+
 
 /* ========== SORTFILTER ========== */
 .sortfilter {
+    padding-bottom: 0rem;
     display: flex;
+    justify-content: center;
     gap: 20px;
-    padding: 2rem 16rem 0;
 
     label {
         margin-right: 10px;
@@ -29,8 +36,13 @@
 
 /* ========== PRODUCT ========== */
 .products {
-    padding: 2rem 12rem;
     display: grid;
 }
 
 
+
+
+
+/* =================================== */
+/* ========== MEDIA QUERIES ========== */
+/* =================================== */
